@@ -21,9 +21,9 @@ def signupuser(request):
             form.save()
             return redirect(to='News:main')
         else:
-            return render(request, 'users/signup.html', context={"form": form})
+            return render(request, 'signup.html', context={"form": form})
 
-    return render(request, 'users/signup.html', context={"form": RegisterForm()})
+    return render(request, 'signup.html', context={"form": RegisterForm()})
 
 def loginuser(request):
     if request.user.is_authenticated:
@@ -33,12 +33,12 @@ def loginuser(request):
         user = authenticate(username=request.POST['username'], password=request.POST['password'])
         if user is None:
             messages.error(request, 'Username or password didn\'t match')
-            return redirect(to='/users/login')
+            return redirect(to='login')
 
         login(request, user)
         return redirect(to='News:main')
 
-    return render(request, 'users/login.html', context={"form": LoginForm()})
+    return render(request, 'login.html', context={"form": LoginForm()})
 
 @login_required
 def logoutuser(request):
@@ -60,7 +60,7 @@ def profile(request):
             return redirect(to="users:profile")
 
     profile_form = ProfileForm(instance=profile_instance)
-    return render(request, "users/profile.html", {"profile_form": profile_form})
+    return render(request, "profile.html", {"profile_form": profile_form})
 
 
 class ResetPasswordView(SuccessMessageMixin, PasswordResetView):
