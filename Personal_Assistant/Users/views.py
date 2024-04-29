@@ -10,7 +10,6 @@ from django.contrib.messages.views import SuccessMessageMixin
 from django.urls import reverse_lazy
 
 
-
 def signupuser(request):
     if request.user.is_authenticated:
         return redirect(to='News:main')
@@ -25,9 +24,10 @@ def signupuser(request):
 
     return render(request, 'signup.html', context={"form": RegisterForm()})
 
+
 def loginuser(request):
     if request.user.is_authenticated:
-       return redirect(to='News:main')
+        return redirect(to='News:main')
 
     if request.method == 'POST':
         user = authenticate(username=request.POST['username'], password=request.POST['password'])
@@ -39,6 +39,7 @@ def loginuser(request):
         return redirect(to='News:main')
 
     return render(request, 'login.html', context={"form": LoginForm()})
+
 
 @login_required
 def logoutuser(request):
