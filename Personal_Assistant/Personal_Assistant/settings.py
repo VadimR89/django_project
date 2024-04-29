@@ -85,6 +85,15 @@ DATABASES = {
         'PASSWORD': 'UralM67',
         'HOST': '127.0.0.1',
         'PORT': '5432',
+    },
+
+    'koyeb': {
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'koyebdb',
+        'USER': 'koyeb-adm',
+        'PASSWORD': 'yT4Zq7Ujeauw',
+        'HOST': 'ep-soft-dawn-a2zj0hm3.eu-central-1.pg.koyeb.app',
+        'OPTIONS': {'sslmode': 'require'},
     }
 }
 
